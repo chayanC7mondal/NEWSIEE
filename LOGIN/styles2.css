@@ -1,0 +1,148 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #1b73bb;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #000000;
+    text-shadow: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 700px;
+}
+
+#quiz-container {
+    background-color: #2294ed;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #000000;
+    text-align: center;
+}
+
+.question-card {
+    background-color: #9fd3fb;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 660px;
+}
+
+.question-text {
+    font-size: 1.2em;
+    margin-bottom: 2px;
+    color: #000000;
+}
+
+.options-list {
+    list-style: none;
+    padding: 0;
+}
+
+.options-list li {
+    margin-bottom: 10px;
+}
+
+.options-list input[type="radio"] {
+    appearance: none;
+    background-color: #ffffff;
+    margin: 0;
+    font: inherit;
+    color: #000000;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    border: 2px solid #000000;
+    transition: background 0.3s;
+    position: relative;
+    cursor: pointer;
+}
+
+.options-list input[type="radio"]::before {
+    content: "";
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+    background-color: #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+.options-list input[type="radio"]:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.options-list label {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+#submit-btn {
+    background-color: #00796b;
+    color: #ffffff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#submit-btn:hover {
+    background-color: #004d40;
+}
+
+#result-text {
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-align: center;
+    color: #000000;
+}
+
+#result-text::before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 50%;
+    margin: 10px auto;
+    background-color: #000000;
+}

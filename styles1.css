@@ -1,0 +1,136 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #44f865;
+    text-shadow: 0 0 4px #44f865, 0 0 20px #44f865, 0 0 30px #44f865;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 700px;
+}
+
+#quiz-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), inset 0 0 10px rgba(0, 255, 255, 0.3);
+    width: 100%;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #44f865;
+    text-align: center;
+    text-shadow: 0 0 10px #44f865, 0 0 20px #44f865;
+}
+
+.question-container {
+    margin-bottom: 20px;
+}
+
+.question-text {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #44f865;
+    text-shadow: 0 0 5px #44f865;
+}
+
+.options-list {
+    list-style: none;
+    padding: 0;
+}
+
+.options-list li {
+    margin-bottom: 10px;
+}
+
+.options-list input[type="radio"] {
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    font: inherit;
+    color: #44f865;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    border: 2px solid #44f865;
+    box-shadow: 0 0 10px #44f865;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.options-list input[type="radio"]::before {
+    content: "";
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: 50%;
+    transform: scale(0);
+    box-shadow: inset 1em 1em #44f865;
+    transition: transform 0.3s ease-in-out;
+}
+
+.options-list input[type="radio"]:checked::before {
+    transform: scale(1);
+}
+
+#submit-btn {
+    background: linear-gradient(45deg, #37f456, #54f945);
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.5em;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 0 15px rgba(110, 245, 105, 0.6), inset 0 0 5px rgba(7, 142, 56, 0.3);
+}
+
+#submit-btn:hover {
+    background: linear-gradient(45deg, #00bfa6, #00ffcc);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8), inset 0 0 10px rgba(0, 255, 255, 0.4);
+}
+
+#result-text {
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-align: center;
+    color: #4dcb62;
+    text-shadow: 0 0 10px #2d9d58;
+}
+
+#result-text::before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 50%;
+    margin: 10px auto;
+    background: linear-gradient(90deg, #44f865, #44f865);
+    box-shadow: 0 0 10px #44f865;
+}
