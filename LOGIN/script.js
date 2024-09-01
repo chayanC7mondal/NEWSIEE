@@ -72,6 +72,16 @@ searchButton.addEventListener("click", () => {
     curSelectedNav = null;
 });
 
+async function fetchNews(query) {
+    try {
+        const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+        const data = await res.json();
+        bindData(data.articles);
+    } catch (error) {
+        console.error("Error fetching news:", error);
+    }
+}
+
 function toggleSidebar() {
     const sidebar = document.getElementById("sidebar");
     if (sidebar.style.width === "250px") {
