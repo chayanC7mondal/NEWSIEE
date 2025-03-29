@@ -1,5 +1,7 @@
-const API_KEY = "defb7ac32f874a258c2564a6d1e41cd3";
-const url = "https://newsapi.org/v2/everything?q=";
+// const API_KEY = "defb7ac32f874a258c2564a6d1e41cd3";
+// const url = "https://newsapi.org/v2/everything?q=";
+const API_KEY = "a43dd6059491b12654f7ea97e7bf9c49"; // GNews API Key
+const url = "https://gnews.io/api/v4/search?q=";
 
 window.addEventListener("load", () => fetchNews("India"));
 
@@ -9,11 +11,11 @@ function reload() {
 
 async function fetchNews(query) {
   try {
-    const res = await fetch(`${url}${query}&apiKey=${API_KEY}`, {
+    const res = await fetch(`${url}${query}&token=${API_KEY}`, {
       method: "GET",
       headers: {
         Accept: "application/json",
-        "User-Agent": "Mozilla/5.0",
+        "User-Agent": navigator.userAgent, // Use the user's browser agent
       },
     });
 
@@ -23,13 +25,18 @@ async function fetchNews(query) {
 
     const data = await res.json();
 
-    if (!data.articles) {
-      throw new Error("No articles found");
+    if (!data.articles || data.articles.length === 0) {
+      console.warn("No articles found.");
+      document.getElementById("cards-container").innerHTML =
+        "<p>No news found.</p>";
+      return;
     }
 
     bindData(data.articles);
   } catch (error) {
     console.error("Error fetching news:", error);
+    document.getElementById("cards-container").innerHTML =
+      "<p>Failed to load news. Try again later.</p>";
   }
 }
 
@@ -40,7 +47,8 @@ function bindData(articles) {
   cardsContainer.innerHTML = "";
 
   articles.forEach((article) => {
-    if (!article.urlToImage) return;
+    if (!article.image) return; // GNews uses "image" instead of "urlToImage"
+
     const cardClone = newsCardTemplate.content.cloneNode(true);
     fillDataInCard(cardClone, article);
     cardsContainer.appendChild(cardClone);
@@ -53,9 +61,9 @@ function fillDataInCard(cardClone, article) {
   const newsSource = cardClone.querySelector("#news-source");
   const newsDesc = cardClone.querySelector("#news-desc");
 
-  newsImg.src = article.urlToImage;
+  newsImg.src = article.image;
   newsTitle.innerHTML = article.title;
-  newsDesc.innerHTML = article.description;
+  newsDesc.innerHTML = article.description || "No description available.";
 
   const date = new Date(article.publishedAt).toLocaleString("en-US", {
     timeZone: "Asia/Jakarta",
@@ -81,7 +89,7 @@ const searchButton = document.getElementById("search-button");
 const searchText = document.getElementById("search-text");
 
 searchButton.addEventListener("click", () => {
-  const query = searchText.value;
+  const query = searchText.value.trim();
   if (!query) return;
   fetchNews(query);
   curSelectedNav?.classList.remove("active");
