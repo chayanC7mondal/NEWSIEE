@@ -26,29 +26,93 @@
       <img src="./images/Logo.png" alt="Logo" class="logo" />
     </div>
     <div class="container">
-      <h2><b>Welcome Back</b></h2>
+      <h2 class="header"><b>Welcome Back</b></h2>
       <p>Welcome back! Please enter your details.</p>
-      <form>
-        <input type="email" placeholder="Enter your email" required />
-        <input type="password" placeholder="Password" required />
+      <form id="login-form">
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          required
+        />
+        <input type="password" id="password" placeholder="Password" required />
         <div class="forgot-password">
           <a href="#">Forgot password</a>
         </div>
-        <!-- Anchor tag added around the login button -->
-        <a href="./newsiee/index_news.html" class="btn btn-primary">
-          <button type="button" class="btn btn-primary">Login</button>
-        </a>
+        <button type="submit" class="btn btn-primary">Login</button>
       </form>
+
       <div class="google-signin">
-        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <button id="google-signin-btn" class="btn btn-danger">
+          Sign in with Google
+        </button>
       </div>
+
       <div class="sign-up">
-        Don't have an account? <a href="signup.html">Sign up for free</a>
+        Don't have an account? <a href="signup/index.html">Sign up for free</a>
       </div>
     </div>
+
+    <script type="module">
+      // Import Firebase SDKs
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+        GoogleAuthProvider,
+        signInWithPopup,
+      } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+
+      // Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCHjQNFKt7tifsHwJ8xBuy0R0r-n4iGilc",
+        authDomain: "newsiee-5d2b6.firebaseapp.com",
+        projectId: "newsiee-5d2b6",
+        storageBucket: "newsiee-5d2b6.appspot.com",
+        messagingSenderId: "1065958281889",
+        appId: "1:1065958281889:web:f45cb6e549014a4ee5d6e0",
+        measurementId: "G-X9HTQ9D8P6",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+
+      // Email & Password Login
+      document
+        .getElementById("login-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              alert("Login successful!");
+              window.location.href = "./newsiee/index_news.html"; // Redirect after login
+            })
+            .catch((error) => {
+              alert(error.message);
+            });
+        });
+
+      // Google Sign-In
+      document
+        .getElementById("google-signin-btn")
+        .addEventListener("click", function () {
+          signInWithPopup(auth, provider)
+            .then((result) => {
+              alert("Google Sign-In Successful!");
+              window.location.href = "./newsiee/index_news.html"; // Redirect after login
+            })
+            .catch((error) => {
+              alert(error.message);
+            });
+        });
+    </script>
     <script src="index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   </body>
 </html>

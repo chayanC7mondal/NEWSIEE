@@ -1,0 +1,173 @@
+/* General Styling */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #121212;
+  color: #fff;
+  flex-direction: column;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.logo-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.logo {
+  max-width: 150px;
+  width: 100%;
+  height: auto;
+}
+
+/* Form Container */
+.container {
+  background-color: #1e1e1e;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  transition: box-shadow 0.3s ease, background-color 0.5s ease;
+}
+
+.container:hover {
+  box-shadow: 0 0 15px 5px rgba(40, 167, 69, 0.5);
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  color: #fff;
+  transition: color 0.5s ease;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: #2a2a2a;
+  color: #fff;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  transition: background-color 0.5s ease, color 0.5s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+  outline: none;
+}
+
+/* Sign Up Button */
+button[type="submit"] {
+  padding: 0.8rem;
+  background-color: #28a745; /* Green color for sign up */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+/* Google Sign-Up Button */
+.google-signin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Already have an account */
+.already-have-account {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.already-have-account a {
+  color: #28a745;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.already-have-account a:hover {
+  text-decoration: underline;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+#toggle-theme {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+body.light-theme #toggle-theme {
+  border-color: #000;
+  color: #000;
+}
+
+body.light-theme .header {
+  border-color: #000;
+  color: #000;
+}
+
+#toggle-theme:hover {
+  background-color: #28a745;
+  color: #fff;
+}
+
+body.light-theme #toggle-theme:hover {
+  background-color: #218838;
+  color: #fff;
+}
+
+/* Light Theme Modifications */
+body.light-theme {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+body.light-theme .container {
+  background-color: #ffffff;
+}
+
+body.light-theme input {
+  background-color: #ffffff;
+  color: #000;
+}
+
+body.light-theme button[type="submit"] {
+  background-color: #218838;
+}
+
+body.light-theme .already-have-account a {
+  color: #218838;
+}
